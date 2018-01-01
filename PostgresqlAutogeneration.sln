@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostgresqlAutogeneration", "PostgresqlAutogeneration\PostgresqlAutogeneration.csproj", "{392439E3-8A0B-4C31-891E-72B34BEC031C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InnoPost", "InnoPost\InnoPost.csproj", "{32562CE9-8DC3-41FF-B21F-B5AAAB495A22}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{392439E3-8A0B-4C31-891E-72B34BEC031C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{392439E3-8A0B-4C31-891E-72B34BEC031C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{392439E3-8A0B-4C31-891E-72B34BEC031C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32562CE9-8DC3-41FF-B21F-B5AAAB495A22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32562CE9-8DC3-41FF-B21F-B5AAAB495A22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32562CE9-8DC3-41FF-B21F-B5AAAB495A22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32562CE9-8DC3-41FF-B21F-B5AAAB495A22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
