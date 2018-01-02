@@ -9,7 +9,7 @@ namespace InnoPost
     {
         public static string GenerarConsulta(string tablaNombre, string PrefijoConsulta, string tablaAlias, List<Columna> ListaDeColumnas)
         {
-            string Consulta = "CREATE OR REPLACE FUNCTION " + tablaNombre + "_" + PrefijoConsulta + "()\r\nRETURNS TABLE(";
+            string Consulta = "CREATE OR REPLACE FUNCTION " + tablaNombre + "_" + PrefijoConsulta + "()\r\nRETURNS TABLE (";
 
             foreach (Columna c in ListaDeColumnas)
             {

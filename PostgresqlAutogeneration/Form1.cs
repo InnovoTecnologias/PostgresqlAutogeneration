@@ -63,6 +63,8 @@ namespace PostgresqlAutogeneration
 
         private void button1_Click(object sender, EventArgs e)
         {
+            ProcesarNombreYAlias();
+            
             bool HayUnoQueAbre = false;
             int FinDeDefinicion = 0;
 
@@ -101,7 +103,7 @@ namespace PostgresqlAutogeneration
                 }
             }
             
-            textBox2.Text = Autogeneration.GenerarConsulta(tablaNombre, txbGetPrefix.Text, "e", ListaDeColumnas) + "\r\r\n\r\r\n" + Autogeneration.GenerarEliminacion(tablaNombre, txbDeletePrefix.Text, ListaDeColumnas);
+            textBox2.Text = Autogeneration.GenerarConsulta(tablaNombre, txbGetPrefix.Text, txbTableAlias.Text, ListaDeColumnas) + "\r\n\r\n" + Autogeneration.GenerarEliminacion(tablaNombre, txbDeletePrefix.Text, ListaDeColumnas);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -111,9 +113,18 @@ namespace PostgresqlAutogeneration
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (txbTableDef.Text=="") txbTableDef.Text = Clipboard.GetText();
-            tablaNombre = txbTableDef.Text.Substring(txbTableDef.Text.IndexOf("CREATE TABLE ") + 13, txbTableDef.Text.IndexOf("(") - txbTableDef.Text.IndexOf("CREATE TABLE ") - 43);
-            txbTableAlias.Text = (tablaNombre.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries))[1].Substring(0, 1);
+            txbTableDef.Text = Clipboard.GetText();
+        }
+        
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(textBox2.Text);
+        }
+
+        private void ProcesarNombreYAlias()
+        {
+            tablaNombre = txbTableDef.Text.Substring(txbTableDef.Text.IndexOf("CREATE TABLE ") + 13, txbTableDef.Text.IndexOf("(") - txbTableDef.Text.IndexOf("CREATE TABLE ") - 13).Replace("\t",string.Empty).Replace("\r", string.Empty).Replace("\n", string.Empty).Trim();
+            if (txbTableAlias.Text=="") txbTableAlias.Text = (tablaNombre.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries))[1].Substring(0, 1);
         }
     }
 }
