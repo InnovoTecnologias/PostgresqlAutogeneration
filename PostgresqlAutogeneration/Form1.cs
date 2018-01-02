@@ -18,49 +18,7 @@ namespace PostgresqlAutogeneration
         {
             InitializeComponent();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            txbTableDef.Text = @"-- Table: proyectos.equipo
-		                    -- DROP TABLE proyectos.equipo;
-
-                            CREATE TABLE proyectos.equipo
-                            (
-                                id integer NOT NULL DEFAULT nextval('proyectos.equipo_id_seq'::regclass),
-                                idcliente integer NOT NULL,
-                                idtipo integer NOT NULL,
-                                nombre character varying(250) COLLATE pg_catalog.""default"" NOT NULL,
-                                numero integer NOT NULL,
-                                usuario character varying(250) COLLATE pg_catalog.""default"" NOT NULL,
-                                cpu character varying(250) COLLATE pg_catalog.""default"" NOT NULL,
-                                ram integer NOT NULL,
-                                fuentes character varying(250) COLLATE pg_catalog.""default"",
-                                opticos character varying(250) COLLATE pg_catalog.""default"",
-                                ip character varying(50) COLLATE pg_catalog.""default"",
-                                mascara character varying(50) COLLATE pg_catalog.""default"",
-                                gateway character varying(50) COLLATE pg_catalog.""default"",
-                                dhcp boolean,
-                                so character varying(50) COLLATE pg_catalog.""default"",
-                                codigo character varying(50) COLLATE pg_catalog.""default"",
-                                CONSTRAINT equipo_pkey PRIMARY KEY (id),
-                                CONSTRAINT fk_equipo_idcliente FOREIGN KEY (idcliente)
-                                    REFERENCES ventas.cliente (id) MATCH SIMPLE
-                                    ON UPDATE NO ACTION
-                                    ON DELETE NO ACTION,
-                                CONSTRAINT fk_equipo_idtipo FOREIGN KEY (idtipo)
-                                    REFERENCES proyectos.equipo_tipo (id) MATCH SIMPLE
-                                    ON UPDATE NO ACTION
-                                    ON DELETE NO ACTION
-                            )
-                            WITH (
-                                OIDS = FALSE
-                            )
-                            TABLESPACE pg_default;
-
-                            ALTER TABLE proyectos.equipo
-                                OWNER to postgres;";
-        }
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
             ProcesarNombreYAlias();
@@ -103,7 +61,7 @@ namespace PostgresqlAutogeneration
                 }
             }
             
-            textBox2.Text = Autogeneration.GenerarConsulta(tablaNombre, txbGetPrefix.Text, txbTableAlias.Text, ListaDeColumnas) + "\r\n\r\n" + Autogeneration.GenerarEliminacion(tablaNombre, txbDeletePrefix.Text, ListaDeColumnas);
+            textBox2.Text = Autogeneration.GenerarConsulta(tablaNombre, txbGetPrefix.Text, txbTableAlias.Text, ListaDeColumnas, txbExtraUser.Text) + "\r\n\r\n" + Autogeneration.GenerarInsercion(tablaNombre, txbAddPrefix.Text, txbTableAlias.Text, ListaDeColumnas, txbExtraUser.Text) + "\r\n\r\n" + Autogeneration.GenerarModificacion(tablaNombre, txbUpdatePrefix.Text, txbTableAlias.Text, ListaDeColumnas, txbExtraUser.Text) + "\r\n\r\n" + Autogeneration.GenerarEliminacion(tablaNombre, txbDeletePrefix.Text, ListaDeColumnas, txbExtraUser.Text);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -123,7 +81,7 @@ namespace PostgresqlAutogeneration
 
         private void ProcesarNombreYAlias()
         {
-            tablaNombre = txbTableDef.Text.Substring(txbTableDef.Text.IndexOf("CREATE TABLE ") + 13, txbTableDef.Text.IndexOf("(") - txbTableDef.Text.IndexOf("CREATE TABLE ") - 13).Replace("\t",string.Empty).Replace("\r", string.Empty).Replace("\n", string.Empty).Trim();
+            tablaNombre = Autogeneration.ProcesarNombre(txbTableDef.Text);
             if (txbTableAlias.Text=="") txbTableAlias.Text = (tablaNombre.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries))[1].Substring(0, 1);
         }
     }

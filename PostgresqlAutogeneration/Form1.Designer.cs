@@ -35,7 +35,7 @@
             this.txbGetPrefix = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txbDeletePrefix = new System.Windows.Forms.TextBox();
-            this.txbModifyPrefix = new System.Windows.Forms.TextBox();
+            this.txbUpdatePrefix = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txbAddPrefix = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -45,6 +45,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.txbExtraUser = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txbTableDef
@@ -115,22 +117,22 @@
             this.txbDeletePrefix.TabIndex = 6;
             this.txbDeletePrefix.Text = "eliminar";
             // 
-            // txbModifyPrefix
+            // txbUpdatePrefix
             // 
-            this.txbModifyPrefix.Location = new System.Drawing.Point(314, 247);
-            this.txbModifyPrefix.Name = "txbModifyPrefix";
-            this.txbModifyPrefix.Size = new System.Drawing.Size(100, 20);
-            this.txbModifyPrefix.TabIndex = 10;
-            this.txbModifyPrefix.Text = "modificar";
+            this.txbUpdatePrefix.Location = new System.Drawing.Point(314, 247);
+            this.txbUpdatePrefix.Name = "txbUpdatePrefix";
+            this.txbUpdatePrefix.Size = new System.Drawing.Size(100, 20);
+            this.txbUpdatePrefix.TabIndex = 10;
+            this.txbUpdatePrefix.Text = "modificar";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(224, 250);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 13);
+            this.label3.Size = new System.Drawing.Size(70, 13);
             this.label3.TabIndex = 9;
-            this.label3.Text = "Modify prefix";
+            this.label3.Text = "Update prefix";
             // 
             // txbAddPrefix
             // 
@@ -151,17 +153,17 @@
             // 
             // txbTableAlias
             // 
-            this.txbTableAlias.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbTableAlias.Location = new System.Drawing.Point(697, 220);
+            this.txbTableAlias.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbTableAlias.Location = new System.Drawing.Point(536, 220);
             this.txbTableAlias.Name = "txbTableAlias";
             this.txbTableAlias.Size = new System.Drawing.Size(100, 20);
             this.txbTableAlias.TabIndex = 12;
             // 
             // label5
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(618, 223);
+            this.label5.Location = new System.Drawing.Point(457, 223);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(58, 13);
             this.label5.TabIndex = 11;
@@ -208,19 +210,39 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // txbExtraUser
+            // 
+            this.txbExtraUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbExtraUser.Location = new System.Drawing.Point(536, 247);
+            this.txbExtraUser.Name = "txbExtraUser";
+            this.txbExtraUser.Size = new System.Drawing.Size(100, 20);
+            this.txbExtraUser.TabIndex = 18;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(457, 250);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(54, 13);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Extra user";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(825, 539);
+            this.Controls.Add(this.txbExtraUser);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.txbTableAlias);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.txbModifyPrefix);
+            this.Controls.Add(this.txbUpdatePrefix);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txbAddPrefix);
             this.Controls.Add(this.label4);
@@ -235,7 +257,6 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PostgreSQL Autogeneration Tool";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -250,7 +271,7 @@
         private System.Windows.Forms.TextBox txbGetPrefix;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txbDeletePrefix;
-        private System.Windows.Forms.TextBox txbModifyPrefix;
+        private System.Windows.Forms.TextBox txbUpdatePrefix;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txbAddPrefix;
         private System.Windows.Forms.Label label4;
@@ -260,6 +281,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox txbExtraUser;
+        private System.Windows.Forms.Label label7;
     }
 }
 
